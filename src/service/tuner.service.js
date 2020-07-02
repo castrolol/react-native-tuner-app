@@ -1,5 +1,6 @@
 import Recording from 'react-native-recording';
 import PitchFinder from 'pitchfinder';
+import {PermissionsAndroid} from 'react-native';
 
 export default class Tuner {
   middleA = 440;
@@ -25,7 +26,11 @@ export default class Tuner {
     this.pitchFinder = new PitchFinder.YIN({sampleRate: this.sampleRate});
   }
 
-  start() {
+  async start() {
+    await PermissionsAndroid.requestMultiple([
+      PermissionsAndroid.PERMISSIONS.RECORD_AUDIO,
+    ]);
+
     Recording.init({
       sampleRate: this.sampleRate,
       bufferSize: this.bufferSize,

@@ -7,17 +7,17 @@ export default function useTuner() {
 
   const tuner = useMemo(() => {
     const tuner = new Tuner();
-    tuner.start();
-    tuner.onNoteDetected = _note => {
-      var _key = _note.cents + '-' + _note.value;
+    tuner.start().then(() => {
+      tuner.onNoteDetected = _note => {
+        var _key = _note.cents + '-' + _note.value;
 
-    //  if (lastNoteName.current === _key) {
+        //  if (lastNoteName.current === _key) {
         setNote(_note);
-    //   } else {
-    //     lastNoteName.current = _key;
-    //   }
-    };
-
+        //   } else {
+        //     lastNoteName.current = _key;
+        //   }
+      };
+    });
     return tuner;
   }, []);
 
