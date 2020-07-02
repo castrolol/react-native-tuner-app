@@ -1,20 +1,8 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import TunerScreen from './screens/TunerScreen';
 
 function App() {
-  return (
-    <View style={styles.root}>
-      <Text>Hello World</Text>
-    </View>
-  );
+  return <TunerScreen />;
 }
-
-const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
 
 export default App;
